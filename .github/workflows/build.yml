@@ -23,6 +23,11 @@ jobs:
           echo "Commit: ${{ github.sha }}" >> artifact.txt
           tar -czvf artifact.tar.gz artifact.txt
 
+      - name: Attest artifact
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: artifact.tar.gz
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
