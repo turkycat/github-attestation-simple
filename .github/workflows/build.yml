@@ -59,9 +59,6 @@ jobs:
 
       - name: Publish Release
         id: publish_release
-        uses: softprops/action-gh-release@v2
-        with:
-          draft: false
-          tag_name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release edit "${{ github.ref_name }}" --draft=false --repo ${{ github.repository }}
